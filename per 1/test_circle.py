@@ -41,3 +41,10 @@ class TestCircle(unittest.TestCase):
         self.assertAlmostEqual(self.c.area, 78.5398, 3)
         self.assertAlmostEqual(self.unit_circle.area, 
                 3.14159265358979323, 10)
+
+    def test_radius(self):
+        with self.assertRaises(TypeError):
+            self.c.radius = ["Tejas", "Kai"]
+        with self.assertRaises(ValueError):
+            self.c.radius = -1
+            

@@ -19,5 +19,15 @@ def main():
     c.diameter = 37
     print(c.radius)
 
+    new_circle = Circle.from_diameter(20)
+    print(new_circle.radius)
+    print(Circle.pi)
+    # If you use l^1 or taxicab geometry
+    new_circle.pi = 2
+    # Uses the __class__.pi
+    print(new_circle.area)
+    # Uses the self.pi
+    print(new_circle.circumference)
+
 if __name__ == "__main__":
     main()

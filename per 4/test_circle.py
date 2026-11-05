@@ -37,3 +37,22 @@ class TestCircle(unittest.TestCase):
         self.c.diameter = 59
         self.assertAlmostEqual(self.c.radius, 29.5)
         self.assertAlmostEqual(self.c.diameter, 59)
+    
+    def test_radius_property(self):
+        with self.assertRaises(TypeError):
+            self.c.radius = "Python, Taylor's Version"
+        with self.assertRaises(ValueError):
+            self.c.radius = -11
+    
+    def test_from_diameter(self):
+        new_c = Circle.from_diameter(40)
+        self.assertIsInstance(new_c, Circle)
+        self.assertEqual(new_c.diameter, 40)
+        self.assertEqual(new_c.radius, 20)
+
+    def test_circumference(self):
+        self.assertAlmostEqual(self.c.circumference, 31.4159265359)
+        # Each instance can have its own unique value for the class
+        #   attribute
+        self.c.pi = 4 # Taxicab or l^1 non-Euclidean Geometry
+        self.assertAlmostEqual(self.c.circumference, 40)
